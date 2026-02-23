@@ -15,7 +15,7 @@ RESET		:= \033[0m
 
 # Files
 SRC			:= megaphone.cpp
-OBJ			:= $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
+OBJ			:= $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
 $(NAME): $(OBJ)
 	@echo "$(YELLOW)🔧 Linking objects...$(RESET)"
