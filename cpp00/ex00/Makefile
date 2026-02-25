@@ -1,4 +1,4 @@
-NAME		:= agenda
+NAME		:= .build/megaphone
 
 CPP			:= c++
 CPPFLAGS 	:= -Wall -Wextra -Werror -std=c++98
@@ -14,8 +14,7 @@ BLUE		:= \033[0;34m
 RESET		:= \033[0m
 
 # Files
-INCLUDES	:= PhoneBook.hpp Contacts.hpp
-SRC			:= Main.cpp PhoneBook.cpp Contacts.cpp
+SRC			:= megaphone.cpp
 OBJ			:= $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
 $(NAME): $(OBJ)
@@ -23,7 +22,7 @@ $(NAME): $(OBJ)
 	@$(CPP) $(CPPFLAGS) $(OBJ) -o $(NAME)
 	@echo "$(GREEN)✅ $(NAME) built successfully$(RESET)"
 
-$(OBJ_DIR)/%.o: %.cpp $(INCLUDES)
+$(OBJ_DIR)/%.o: %.cpp
 	@mkdir -p $(dir $@)
 	@echo "$(BLUE)Compiling $<$(RESET)"
 	@$(CPP) $(CPPFLAGS) -c $< -o $@

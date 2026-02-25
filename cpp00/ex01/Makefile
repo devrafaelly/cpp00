@@ -1,4 +1,4 @@
-NAME		:= 
+NAME		:= .build/phonebook
 
 CPP			:= c++
 CPPFLAGS 	:= -Wall -Wextra -Werror -std=c++98
@@ -14,8 +14,8 @@ BLUE		:= \033[0;34m
 RESET		:= \033[0m
 
 # Files
-INCLUDES	:= Account.hpp
-SRC			:= Main.cpp Account.cpp tests.cpp
+INCLUDES	:= PhoneBook.hpp Contact.hpp
+SRC			:= Main.cpp PhoneBook.cpp Contact.cpp
 OBJ			:= $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
 $(NAME): $(OBJ)
@@ -23,7 +23,7 @@ $(NAME): $(OBJ)
 	@$(CPP) $(CPPFLAGS) $(OBJ) -o $(NAME)
 	@echo "$(GREEN)✅ $(NAME) built successfully$(RESET)"
 
-$(OBJ_DIR)/%.o: %.cpp $(INCLUDES)
+$(OBJ_DIR)/%.o: %.cpp
 	@mkdir -p $(dir $@)
 	@echo "$(BLUE)Compiling $<$(RESET)"
 	@$(CPP) $(CPPFLAGS) -c $< -o $@
